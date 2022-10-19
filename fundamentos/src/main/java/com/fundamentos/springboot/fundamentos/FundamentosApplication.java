@@ -11,12 +11,15 @@ public class FundamentosApplication implements CommandLineRunner {
 
 	private ComponentDependancy componentDependancy;
 
+
+	//Contructor de la clase
 	public FundamentosApplication(@Qualifier("componentToImplement") ComponentDependancy componentDependancy){
 
 		this.componentDependancy = componentDependancy;
 
 	}
 
+	//Metodo para iniciar el programa
 	public static void main(String[] args) {
 		SpringApplication.run(FundamentosApplication.class, args);
 
