@@ -32,8 +32,7 @@ public class User {
     public User() {
     }
 
-    public User(long id, String nombre, String email, LocalDate cumpleaños) {
-        this.id = id;
+    public User(String nombre, String email, LocalDate cumpleaños) {
         this.nombre = nombre;
         this.email = email;
         this.cumpleaños = cumpleaños;
@@ -77,5 +76,15 @@ public class User {
 
     public void setPosts(List<Post> posts) {
         this.posts = posts;
+    }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", nombre='" + nombre + '\'' +
+                ", email='" + email + '\'' +
+                ", cumpleaños=" + cumpleaños +
+                '}';
     }
 }
