@@ -3,6 +3,8 @@ package com.fundamentos.springboot.fundamentos;
 import com.fundamentos.springboot.fundamentos.bin.*;
 import com.fundamentos.springboot.fundamentos.component.ComponentDependancy;
 import com.fundamentos.springboot.fundamentos.pojo.UserPojo;
+import org.apache.juli.logging.Log;
+import org.apache.juli.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
@@ -11,6 +13,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 @SpringBootApplication
 public class FundamentosApplication implements CommandLineRunner {
 
+	private final Log LOGGER = LogFactory.getLog(FundamentosApplication.class);
 	private ComponentDependancy componentDependancy;
 	private MyBean myBean;
 	private MyBeanWithDependency myBeanWithDependency;
@@ -50,6 +53,7 @@ public class FundamentosApplication implements CommandLineRunner {
 		System.out.println(userPojo.getApellido() + " - " + userPojo.getNombre());
 		System.out.println(userPojo.getCorreo() + " - " + userPojo.getContraseña());
 		System.out.println("Edad: " + userPojo.getEdad());
+		LOGGER.error("Esto es un error del aplicativo");
 
 
 	}
