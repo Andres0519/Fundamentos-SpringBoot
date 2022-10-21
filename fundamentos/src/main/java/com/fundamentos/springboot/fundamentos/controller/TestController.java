@@ -13,7 +13,7 @@ public class TestController {
     @ResponseBody
     public ResponseEntity<String> function(){
 
-        return new ResponseEntity<>("Hola, funcionó la página web", HttpStatus.OK);
+        return new ResponseEntity<>("Hola, funcionó la página webBV: ", HttpStatus.OK);
 
     }
 
