@@ -46,6 +46,13 @@ public class FundamentosApplication implements CommandLineRunner {
 	@Override
 	public void run(String... args) throws Exception {
 
+
+
+
+	}
+
+	private void ejemplosAnteriores(){
+
 		componentDependancy.saluduar();
 		myBean.print();
 		myBeanWithDependency.printDependency();
@@ -54,7 +61,6 @@ public class FundamentosApplication implements CommandLineRunner {
 		System.out.println(userPojo.getCorreo() + " - " + userPojo.getContraseña());
 		System.out.println("Edad: " + userPojo.getEdad());
 		LOGGER.error("Esto es un error del aplicativo");
-
 
 	}
 }
