@@ -19,6 +19,8 @@ public interface UserRepository extends JpaRepository<User,Long> {
     List<User> findBySort(String nombre, Sort sort);
 
     List<User> findByNombre(String nombre);
+
+    List<User> findByNombreLike(String nombre);
 }
 
 

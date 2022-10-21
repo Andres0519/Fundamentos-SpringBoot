@@ -104,5 +104,8 @@ public class FundamentosApplication implements CommandLineRunner {
 		userRepository.findByNombre("Karen").stream()
 				.forEach(user -> LOGGER.info("Usuario buscado por el nombre en especifico " + user));
 
+		userRepository.findByNombreLike("%Carlos%").stream()
+				.forEach(user -> LOGGER.info("Usuario buscado por el nombre que comiencen con C" + user));
+
 	}
 }
