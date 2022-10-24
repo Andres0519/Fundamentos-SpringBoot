@@ -38,6 +38,11 @@ public class User {
         this.cumpleaños = cumpleaños;
     }
 
+    public User(Long id){
+
+        this.id = id;
+    }
+
     public long getId() {
         return id;
     }

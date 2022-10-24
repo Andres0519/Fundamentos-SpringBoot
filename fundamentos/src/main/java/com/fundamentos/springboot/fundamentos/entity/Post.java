@@ -1,5 +1,7 @@
 package com.fundamentos.springboot.fundamentos.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import javax.persistence.*;
 
 @Entity
@@ -15,6 +17,7 @@ public class Post {
     private String des;
 
     @ManyToOne
+    @JsonBackReference
     private  User user;
 
     public Post() {

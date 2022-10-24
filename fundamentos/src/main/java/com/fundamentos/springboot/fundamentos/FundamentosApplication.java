@@ -5,6 +5,7 @@ import com.fundamentos.springboot.fundamentos.component.ComponentDependancy;
 import com.fundamentos.springboot.fundamentos.entity.User;
 import com.fundamentos.springboot.fundamentos.pojo.UserPojo;
 import com.fundamentos.springboot.fundamentos.repository.UserRepository;
+import com.fundamentos.springboot.fundamentos.service.UserService;
 import org.apache.juli.logging.Log;
 import org.apache.juli.logging.LogFactory;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -31,11 +32,13 @@ public class FundamentosApplication implements CommandLineRunner {
 
 	private UserRepository userRepository;
 
+	private UserService userService;
+
 	//Contructor de la clase
 	public FundamentosApplication(@Qualifier("componentToImplement") ComponentDependancy componentDependancy,
 								  MyBean myBean , MyBeanWithDependency myBeanWithDependency,
 								  MyBeanWithProperties myBeanWithProperties, UserPojo userPojo,
-								  UserRepository userRepository){
+								  UserRepository userRepository, UserService userService){
 
 		this.componentDependancy = componentDependancy;
 		this.myBean = myBean;
@@ -43,6 +46,7 @@ public class FundamentosApplication implements CommandLineRunner {
 		this.myBeanWithProperties = myBeanWithProperties;
 		this.userPojo = userPojo;
 		this.userRepository = userRepository;
+		this.userService = userService;
 
 
 	}
@@ -60,6 +64,7 @@ public class FundamentosApplication implements CommandLineRunner {
 		//ejemplosAnteriores();
 		guardarUsuarios();
 		obtenerInformacionJpql();
+		guardarUsuarios();
 
 	}
 
@@ -107,5 +112,20 @@ public class FundamentosApplication implements CommandLineRunner {
 		userRepository.findByNombreLike("%Carlos%").stream()
 				.forEach(user -> LOGGER.info("Usuario buscado por el nombre que comiencen con C" + user));
 
+	}
+
+	private void guardarErrorTransaccioes(){
+
+		User user1 = new User("Andres","abc@gmail.com", LocalDate.of(2022,10,21));
+		User user2 = new User("Marco", "marco@domain.com", LocalDate.of(2021, 12, 8));
+		User user3 = new User("Daniela", "daniela@domain.com", LocalDate.of(2021, 9, 8));
+		User user4 = new User("Carlos", "marisol@domain.com", LocalDate.of(2022, 6, 18));
+		User user5 = new User("Karen", "karen@domain.com", LocalDate.of(2021, 1, 1));
+
+		List<User> tests = Arrays.asList(user1,user2,user3,user4,user5);
+		userService.saveTrasanctional(tests);
+
+		userService.obtenerUsuarios().stream()
+				.forEach(user -> LOGGER.info("Este es el usuario: " + user));
 	}
 }
